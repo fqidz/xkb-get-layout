@@ -12,13 +12,13 @@ ARGS = -xc\
 	   -Wno-missing-prototypes\
 	   -Wno-disabled-macro-expansion
 
-.DEFAULT_GOAL = xkb-layout-get
+.DEFAULT_GOAL = xkb-get-layout
 
 out:
 	mkdir out
 
-xkb-layout-get: out
-	$(CC) $(ARGS) xkb-layout-get.c -o out/xkb-layout-get
+xkb-get-layout: out
+	$(CC) $(ARGS) xkb-get-layout.c -o out/xkb-get-layout
 
 clean:
-	rm xkb-layout-get
+	rm xkb-get-layout

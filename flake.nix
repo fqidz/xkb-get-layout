@@ -17,27 +17,21 @@
       in
       {
         packages.default = pkgs.clangStdenv.mkDerivation {
-          name = "xkb-layout-get";
+          name = "xkb-get-layout";
           src = builtins.path {
-            name = "xkb-layout-get";
+            name = "xkb-get-layout";
             path = ./.;
           };
-
-          nativeBuildInputs = [ pkgs.pkg-config ];
-          buildInputs = [ pkgs.libxkbcommon ];
 
           phases = [ "buildPhase" ];
           buildPhase = ''
             mkdir -p $out/bin/
-            make -C $src OUTPUT_FILE=$out/bin/xkb-layout-get
+            make -C $src OUTPUT_FILE=$out/bin/xkb-get-layout
           '';
           outputs = [ "out" ];
         };
 
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = [ pkgs.pkg-config ];
-          buildInputs = [ pkgs.libxkbcommon ];
-
           packages = [
             # pkgs.clang-tools should come before pkgs.clang or else clangd can't detect headers
             # https://github.com/NixOS/nixpkgs/issues/76486
