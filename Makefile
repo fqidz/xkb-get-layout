@@ -11,7 +11,8 @@ ARGS = -xc\
 	   -Wno-covered-switch-default\
 	   -Wno-unsafe-buffer-usage\
 	   -Wno-missing-prototypes\
-	   -Wno-disabled-macro-expansion
+	   -Wno-disabled-macro-expansion\
+	   -Wno-implicit-void-ptr-cast
 
 .DEFAULT_GOAL = xkb-get-layout
 OUTPUT_DIR = out
@@ -20,4 +21,4 @@ xkb-get-layout: $(OUTPUT_DIR)
 	$(CC) $(ARGS) xkb-get-layout.c -o $(OUTPUT_DIR)/xkb-get-layout
 
 clean:
-	rm $(OUTPUT_DIR)
+	rm -rf $(OUTPUT_DIR)

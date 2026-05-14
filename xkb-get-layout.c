@@ -34,7 +34,7 @@ int main(void)
         if (strncmp(line, KEYBOARD_NAME, KEYBOARD_NAME_STR_LEN) == 0) {
             // skip to the line: "active keymap: ..."
             for (int i = 0; i < 3; i++) {
-                getline(&line, &line_len, fptr);
+                (void)getline(&line, &line_len, fptr);
             }
 
             char *delim_addr = strchr(line, ':');
@@ -71,7 +71,7 @@ int main(void)
             printf("Failed to run 'nix eval --raw nixpkgs#xkeyboard-config'");
             return EXIT_FAILURE;
         }
-        getline(&line, &line_len, fptr);
+        (void)getline(&line, &line_len, fptr);
         unsigned long base_path_strlen = strlen(line);
         char *rules_path = malloc(base_path_strlen + RULES_PATH_CONCAT_STR_LEN + 1);
         pclose(fptr);
@@ -122,7 +122,7 @@ int main(void)
         // break;
         // compare first 'field' with the current layout
         char *delim_addr = strchr(line, '\t');
-        size_t delim_offset = delim_addr - line;
+        size_t delim_offset = (size_t)(delim_addr - line);
         // printf("'%.*s'\t'%.*s'\t'%i'\t'%s'\n", (int)(strlen(line) - 1), line, (int)(strlen(delim_addr) - 1), delim_addr, delim_offset, current_layout);
         // printf("'%i'\n", delim_offset);
         // printf("%i", strncmp(line, current_layout, delim_offset));
