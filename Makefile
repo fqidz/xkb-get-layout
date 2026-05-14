@@ -14,9 +14,6 @@ ARGS = -xc\
 
 .DEFAULT_GOAL = xkb-get-layout
 
-out:
-	mkdir out
-
 xkb-get-layout: out
 	$(CC) $(ARGS) xkb-get-layout.c -o out/xkb-get-layout
 
