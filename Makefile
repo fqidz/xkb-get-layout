@@ -4,6 +4,7 @@ ARGS = -xc\
 	   -O3\
 	   -ferror-limit=0\
 	   -Weverything\
+	   -Werror\
 	   -Wno-used-but-marked-unused\
 	   -Wno-padded\
 	   -Wno-declaration-after-statement\
@@ -13,9 +14,10 @@ ARGS = -xc\
 	   -Wno-disabled-macro-expansion
 
 .DEFAULT_GOAL = xkb-get-layout
+OUTPUT_DIR = out
 
-xkb-get-layout: out
-	$(CC) $(ARGS) xkb-get-layout.c -o out/xkb-get-layout
+xkb-get-layout: $(OUTPUT_DIR)
+	$(CC) $(ARGS) xkb-get-layout.c -o $(OUTPUT_DIR)/xkb-get-layout
 
 clean:
-	rm xkb-get-layout
+	rm $(OUTPUT_DIR)

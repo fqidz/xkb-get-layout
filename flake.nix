@@ -26,7 +26,7 @@
           phases = [ "buildPhase" ];
           buildPhase = ''
             mkdir -p $out/bin/
-            make -C $src OUTPUT_FILE=$out/bin/xkb-get-layout
+            make -C $src OUTPUT_DIR=$out/bin
           '';
           outputs = [ "out" ];
         };
