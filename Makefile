@@ -1,7 +1,8 @@
 CC = clang
-ARGS = -xc\
+CFLAGS = -xc\
 	   -std=c99\
-	   -O3\
+	   -O0\
+	   -g
 	   -ferror-limit=0\
 	   -Weverything\
 	   -Werror\
@@ -18,7 +19,7 @@ ARGS = -xc\
 OUTPUT_DIR = out
 
 xkb-get-layout: $(OUTPUT_DIR)
-	$(CC) $(ARGS) xkb-get-layout.c -o $(OUTPUT_DIR)/xkb-get-layout
+	$(CC) $(CFLAGS) xkb-get-layout.c -o $(OUTPUT_DIR)/xkb-get-layout
 
 clean:
 	rm -rf $(OUTPUT_DIR)

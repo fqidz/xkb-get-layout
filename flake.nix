@@ -22,11 +22,24 @@
             name = "xkb-get-layout";
             path = ./.;
           };
+          nativeBuildInputs = [ pkgs.makeWrapper ];
 
-          phases = [ "buildPhase" ];
+          phases = [
+            "buildPhase"
+            "postInstall"
+          ];
           buildPhase = ''
             mkdir -p $out/bin/
             make -C $src OUTPUT_DIR=$out/bin
+          '';
+          postInstall = ''
+            wrapProgram $out/bin/xkb-get-layout \
+              --prefix PATH : ${
+                pkgs.lib.makeBinPath [
+                  pkgs.nix
+                  pkgs.hyprland
+                ]
+              }
           '';
           outputs = [ "out" ];
         };
