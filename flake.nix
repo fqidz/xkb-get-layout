@@ -42,6 +42,14 @@
               }
           '';
           outputs = [ "out" ];
+          meta = {
+            description = "Tiny script to get the language short code of the current keyboard layout in hyprland";
+            homepage = "https://github.com/fqidz/xkb-get-layout";
+            platforms = pkgs.lib.platforms.linux;
+            license = pkgs.lib.licenses.mit;
+            mainProgram = "xkb-get-layout";
+            maintainers = pkgs.lib.maintainers.fqidz;
+          };
         };
 
         devShells.default = pkgs.mkShell {
